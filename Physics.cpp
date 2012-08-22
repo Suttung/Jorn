@@ -29,30 +29,12 @@ void Physics::update(float t, float dt)
 	integrate(current, t, dt);  
 }
 
-void Physics::render(float alpha)
-{		
-	glPushMatrix();
-		
-	//Takes the remainder of the timestep and interpolates in order to make the 
-	//	animation smoother.
-	State state = interpolate(previous, current, alpha);	
-	
-	//	Draws the object  //
-		
-	glTranslatef(state._position.x, state._position.y, state._position.z);	//Translation after physics
-		
-	float angle;													//This bunch here
-	Mathematics::Vector axis;										//	contains the
-	state._orientation.angleAxis(angle, axis);						//	rotation of the
-	glRotatef(angle/Mathematics::pi*180, axis.x, axis.y, axis.z);	//	object after physics
-		
-	glPopMatrix();
-}
+
 
 Physics::State Physics::interpolate(const State &a, const State &b, float alpha)
 {
 	State state = b;
-	state._position = a._position*(1-alpha) + b._position*alpha;
+	state._position = a._position*(1-alpha) + b._position*alpha;							//alpha needs to be checked for errors. it is currently doing 1-1 no matter what.
 	state._momentum = a._momentum*(1-alpha) + b._momentum*alpha;
 	state._orientation = slerp(a._orientation, b._orientation, alpha);
 	state._angularMomentum = a._angularMomentum*(1-alpha) + b._angularMomentum*alpha;

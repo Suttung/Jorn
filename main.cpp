@@ -142,9 +142,6 @@ bool init()
 
 void update()
 {
-	
-	
-	
 	newTime = timePassedCounter.get_ticks();
 	frameTime = newTime - previousTime;
 	if (frameTime > 250) {
@@ -160,8 +157,6 @@ void update()
 		t += dt;
 		accumulatorOfFrameTime -= dt;
 	}
-
-	std::cout << t;
 }
 
 void render()
@@ -169,7 +164,7 @@ void render()
     //Clear color buffer
     glClear( GL_COLOR_BUFFER_BIT );
 
-	Player.render();
+	Player.render(accumulatorOfFrameTime / dt);
 
     //Update screen
     SDL_GL_SwapBuffers();

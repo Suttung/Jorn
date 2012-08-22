@@ -48,7 +48,6 @@ public:
 
 	//At this point I'm not sure why it takes the total time as one of the parameters.																		//NEEDS PROFESSIONALS!
 	void update(float t, float dt);
-	void render(float alpha = 1.0f);
 	State getState();
 
 	protected:

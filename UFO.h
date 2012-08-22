@@ -13,7 +13,7 @@ public:
 	~UFO(void);
 
 	void body();
-	void render();
+	void render(float alpha);
 	void reset();
 	void controls();
 

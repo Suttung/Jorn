@@ -43,10 +43,8 @@ void UFO::reset()
 }
 
 
-void UFO::render()
+void UFO::render(float alpha)
 {		
-	float alpha = 1.0f;
-	
 	glPushMatrix();
 																
 	State state = interpolate(previous, current, alpha);	
